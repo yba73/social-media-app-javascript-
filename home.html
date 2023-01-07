@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <!-- Import fontawesome file -->
+    <script
+      src="https://kit.fontawesome.com/85d20f47d5.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Import Bootstrap CSS file -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <!-- Import General CSS file -->
+    <link rel="stylesheet" href="./CSS/general.css" />
+    <!-- Import Home CSS file -->
+    <link rel="stylesheet" href="./CSS/home.css" />
+
+    <!-- Import favicon.ico -->
+    <link
+      rel="shortcut icon"
+      href="./Images/chat-logo.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- ======== Modals======= -->
+
+    <!-------- Add Post Modal ------ -->
+    <div
+      class="modal fade"
+      id="add-post"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              create a new post
+            </h1>
+            <button
+              type="button"
+              class="btn btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">title</label>
+                <input
+                  type="text"
+                  class="form-control add-title-post"
+                  id="recipient-name"
+                  value=""
+                />
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label"
+                  >description</label
+                >
+                <textarea
+                  class="form-control add-body-post"
+                  id="message-text"
+                  value=""
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">image</label>
+                <input type="file" class="form-control add-image-post" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary add-post-btn"
+              data-bs-dismiss="modal"
+            >
+              add post
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------- End Add Post Modal ------ -->
+    <!-------- Edit Post Modal ------ -->
+    <div
+      class="modal fade"
+      id="edit-post"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit post</h1>
+            <button
+              type="button"
+              class="btn btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">title</label>
+                <input
+                  type="text"
+                  class="form-control edit-title-post"
+                  id="recipient-name"
+                  value=""
+                />
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label"
+                  >description</label
+                >
+                <textarea
+                  class="form-control edit-body-post"
+                  id="message-text"
+                  value=""
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">image</label>
+                <input type="file" class="form-control edit-image-post" />
+                <input id="edit-post-id-input" style="visibility: hidden" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary edit-post-btn"
+              data-bs-dismiss="modal"
+              onclick="editPost()"
+            >
+              upadate
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------- Edit Post Modal ------ -->
+
+    <!-------- delete Post Modal ------ -->
+    <div
+      class="modal fade"
+      id="delete-post"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              are you sure to delete post
+              <span id="delete-post-title"> </span> ?
+            </h1>
+            <input id="delete-post-id-input" style="visibility: hidden" />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger delete-post-btn"
+              data-bs-dismiss="modal"
+              onclick="confirmDeletePost()"
+            >
+              yes, delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------- Edit Post Modal ------ -->
+
+    <!-- ======== End Modals======= -->
+    <!-- ======== Add POST BTN ======= -->
+
+    <div
+      class="bg-primary rounded-circle add-new-post"
+      data-bs-toggle="modal"
+      data-bs-target="#add-post"
+      data-bs-whatever="@getbootstrap"
+    >
+      +
+    </div>
+
+    <!-- ======== End Add POST BTN ======= -->
+
+    <!-- ======== Alerts ======= -->
+
+    <!-- ======== Success login Alert ======= -->
+    <!-- Todo: alert hide -->
+    <!-- <div id="liveAlertPlaceholder"></div> -->
+    <div id="successAlert" class="show hide successAlert"></div>
+    <!-- End Todo: alert -->
+
+    <!-- Start Header -->
+    <header>
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <div class="col-9">
+            <nav
+              class="navbar navbar-expand-lg navbar-light bg-light shadow rounded-bottom p-2 navbar-header"
+            ></nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Main Content -->
+    <section>
+      <div class="container">
+        <div class="d-flex justify-content-center mt-5">
+          <div class="col-9">
+            <!-- Start Posts -->
+            <div class="posts">
+              <!-- Start Post -->
+
+              <!-- End Post -->
+            </div>
+            <i class="fa-regular fa-moon-stars"></i>
+            <!-- End Posts -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Content -->
+
+    <!-- Import Axios js file -->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <!-- Import mainLogic js file (function general used for many pages js) -->
+    <script src="./JS/mainLogic.js"></script>
+    <!-- Import navbar js file -->
+    <script src="./JS/navbar.js"></script>
+    <!-- Import Home js file -->
+    <script src="./JS/home.js"></script>
+  </body>
+</html>

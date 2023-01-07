@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- Import favicon.ico -->
+    <link
+      rel="shortcut icon"
+      href="./Images/chat-logo.png"
+      type="image/x-icon"
+    />
+    <!-- Import fontawesome file -->
+    <script
+      src="https://kit.fontawesome.com/85d20f47d5.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Import Bootstrap CSS file -->
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <!-- Import General CSS file -->
+    <link rel="stylesheet" href="./CSS/general.css" />
+    <!-- Import Home CSS file -->
+    <link rel="stylesheet" href="./CSS/login.css" />
+  </head>
+  <body>
+    <!-- ======== Alerts ======= -->
+
+    <!-- ======== Success login Alert ======= -->
+    <div id="successAlert" class="successAlert"></div>
+
+    <!-- Start Header -->
+    <header>
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <div class="col-9">
+            <nav
+              class="navbar navbar-expand-lg navbar-light bg-light shadow rounded-bottom p-2 navbar-header"
+            ></nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+    <!-- Start Form -->
+    <section class="login">
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <div class="col-4">
+            <form class="bg-danger mt-5 p-4 rounded">
+              <div class="form-group">
+                <label for="formGroupExampleInput" class="text-white p-2"
+                  >username</label
+                >
+                <input
+                  type="text"
+                  class="form-control username"
+                  id="formGroupExampleInput"
+                  placeholder="username"
+                  value="yassine"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1 " class="text-white p-2"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control password"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  value="123456"
+                />
+              </div>
+              <div class="form-check mt-4 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn-login">
+                  Login
+                </button>
+                <!-- <button type="button" class="btn btn-primary" id="liveAlertBtn">
+                  Show live alert
+                </button> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Form -->
+
+    <!-- Import js file -->
+    <!-- Import Axios js file -->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <!-- Import mainLogic js file (function general used for many pages js) -->
+    <script src="./JS/mainLogic.js"></script>
+    <!-- Import navbar js file -->
+    <script src="./JS/navbar.js"></script>
+    <!-- Import login js file -->
+    <script src="./JS/login.js"></script>
+  </body>
+</html>

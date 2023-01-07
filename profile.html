@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>profile</title>
+    <!-- Import favicon.ico -->
+    <link
+      rel="shortcut icon"
+      href="./Images/chat-logo.png"
+      type="image/x-icon"
+    />
+    <!-- Import fontawesome file -->
+    <script
+      src="https://kit.fontawesome.com/85d20f47d5.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Import Bootstrap CSS file -->
+    <!-- Import Bootstrap js file -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <!-- Import General CSS file -->
+    <link rel="stylesheet" href="./CSS/general.css" />
+    <!-- Import Home CSS file -->
+    <link rel="stylesheet" href="./CSS/profile.css" />
+  </head>
+  <body>
+    <!-- ======== Modals======= -->
+
+    <!-------- Edit Post Modal ------ -->
+    <div
+      class="modal fade"
+      id="edit-profile"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              update profile
+            </h1>
+            <button
+              type="button"
+              class="btn btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label"
+                  >username</label
+                >
+                <input
+                  type="text"
+                  class="form-control edit-username-profile"
+                  id="recipient-name"
+                  value=""
+                  placeholder="set new username"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">email</label>
+                <input
+                  type="text"
+                  class="form-control edit-email-profile"
+                  id="recipient-name"
+                  value=""
+                  placeholder="set new email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">name</label>
+                <input
+                  type="text"
+                  class="form-control edit-name-profile"
+                  id="recipient-name"
+                  value=""
+                  placeholder="set new name"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">image</label>
+                <input type="file" class="form-control edit-image-profile" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary add-post-btn"
+              data-bs-dismiss="modal"
+            >
+              update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------- Edit Post Modal ------ -->
+    <!-------- Edit Post Modal ------ -->
+    <div
+      class="modal fade"
+      id="edit-post"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit post</h1>
+            <button
+              type="button"
+              class="btn btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">title</label>
+                <input
+                  type="text"
+                  class="form-control edit-title-post"
+                  id="recipient-name"
+                  value=""
+                />
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label"
+                  >description</label
+                >
+                <textarea
+                  class="form-control edit-body-post"
+                  id="message-text"
+                  value=""
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">image</label>
+                <input type="file" class="form-control edit-image-post" />
+                <input id="edit-post-id-input" style="visibility: hidden" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary edit-post-btn"
+              data-bs-dismiss="modal"
+              onclick="editPost()"
+            >
+              upadate
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------- Edit Post Modal ------ -->
+
+    <!-------- delete Post Modal ------ -->
+    <div
+      class="modal fade"
+      id="delete-post"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              are you sure to delete post
+              <span id="delete-post-title"> </span> ?
+            </h1>
+            <input
+              id="delete-post-profile-id-input"
+              style="visibility: hidden"
+              value="true"
+            />
+            <input
+              id="delete-post-id-input"
+              style="visibility: hidden"
+              value="true"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger delete-post-btn"
+              data-bs-dismiss="modal"
+              onclick="confirmDeletePost()"
+            >
+              yes, delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------- Edit Post Modal ------ -->
+
+    <!-- ======== End Modals======= -->
+    <!-------- End Add Post Modal ------ -->
+
+    <!-- ====== Modal====== -->
+    <!-- ======== Alerts ======= -->
+
+    <!-- ======== Success register Alert ======= -->
+    <div id="successAlert" class="show hide successAlert"></div>
+
+    <!-- // Success register Alert // -->
+
+    <!-- // Alerts // -->
+    <!-- Start Header -->
+
+    <header>
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <div class="col-9">
+            <nav
+              class="navbar navbar-expand-lg navbar-light bg-light shadow rounded-bottom p-2 navbar-header"
+            ></nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="d-flex justify-content-center mt-5">
+          <div class="col-9">
+            <!-- Start Posts -->
+            <div class="profile-info">
+              <div class="wrapper my-5">
+                <div class="left">
+                  <img src="" alt="user" width="100" />
+                  <h4>Alex William</h4>
+                  <p>UI Developer</p>
+                </div>
+                <div class="right">
+                  <div class="info">
+                    <h3>Information</h3>
+                    <div class="info_data">
+                      <div class="data">
+                        <h4>Email</h4>
+                        <p>alex@gmail.com</p>
+                      </div>
+                      <div class="data">
+                        <h4>Phone</h4>
+                        <p>0001-213-998761</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="projects">
+                    <h3>Projects</h3>
+                    <div class="projects_data">
+                      <div class="data">
+                        <h4>Recent</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                      </div>
+                      <div class="data">
+                        <h4>Most Viewed</h4>
+                        <p>dolor sit amet.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="social_media">
+                    <ul>
+                      <li>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="posts my-5">
+              <!-- Start Post -->
+
+              <!-- End Post -->
+            </div>
+            <!-- End Posts -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Import Axios js file -->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <!-- Import mainLogic js file (function general used for many pages js) -->
+    <script src="./JS/mainLogic.js"></script>
+    <!-- Import navbar js file -->
+    <script src="./JS/navbar.js"></script>
+    <!-- Import Home js file -->
+    <script src="./JS/profile.js"></script>
+  </body>
+</html>
